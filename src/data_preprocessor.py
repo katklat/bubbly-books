@@ -34,8 +34,12 @@ def add_book_features(books, current_year):
     books['book_age'] = current_year - books['year_of_publication']
     return books
 
-def add_user_features(ratings):
-
+def add_user_features(ratings,users):
+    # split location into city, state and country
+    users['city'] = users['location'].str.split(',').str[0]
+    users['state'] = users['location'].str.split(',').str[1]
+    users['country'] = users['location'].str.split(',').str[2]
+    
     return ratings.groupby('user_id')['rating'].agg([
         ('user_avg_rating', 'mean'),
         ('user_rating_count', 'count')
@@ -48,12 +52,12 @@ def add_book_statistics(ratings):
         ('book_rating_count', 'count')
     ]).reset_index()
 
-def add_features(books, users, ratings):
+def add_features(books, users, ratings):   
  
     current_year = datetime.now().year
     books = add_book_features(books, current_year)
     
-    user_stats = add_user_features(ratings)
+    user_stats = add_user_features(ratings,users)
     
     book_stats = add_book_statistics(ratings)
     

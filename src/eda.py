@@ -76,6 +76,13 @@ def explore_features(features):
     plt.show()
 
     plt.figure(figsize=(10, 5))
+    sns.countplot(x='country', data=features, order=features['country'].value_counts().index[:10])
+    plt.title('Distribution of User Country Top 10')
+    plt.xlabel('User Country')
+    plt.xticks(rotation=45)
+    plt.show()
+
+    plt.figure(figsize=(10, 5))
     sns.histplot(features['book_avg_rating'].dropna(), bins=30, kde=True)
     plt.title('Distribution of Book Average Rating')
     plt.xlabel('Book Average Rating')
