@@ -61,3 +61,40 @@ def explore_data(books, users, ratings):
     plt.xlabel('User Age')
     plt.show()
 
+def explore_features(features):
+
+    plt.figure(figsize=(10, 5))
+    sns.histplot(features['rating_deviation'].dropna(), bins=30, kde=True)
+    plt.title('Distribution of Rating Deviation')
+    plt.xlabel('Rating Deviation')
+    plt.show()
+
+    plt.figure(figsize=(10, 5))
+    sns.histplot(features['user_avg_rating'].dropna(), bins=30, kde=True)
+    plt.title('Distribution of User Average Rating')
+    plt.xlabel('User Average Rating')
+    plt.show()
+
+    plt.figure(figsize=(10, 5))
+    sns.histplot(features['book_avg_rating'].dropna(), bins=30, kde=True)
+    plt.title('Distribution of Book Average Rating')
+    plt.xlabel('Book Average Rating')
+    plt.show()
+
+    plt.figure(figsize=(10, 5))
+    sns.histplot(features['user_rating_count'].dropna(), bins=30, kde=True)
+    plt.title('Distribution of User Rating Count')
+    plt.xlabel('User Rating Count')
+    plt.show()
+
+    plt.figure(figsize=(10, 5))
+    sns.histplot(features['book_rating_count'].dropna(), bins=30, kde=True)
+    plt.title('Distribution of Book Rating Count')
+    plt.xlabel('Book Rating Count')
+    plt.show()
+
+    plt.figure(figsize=(10, 5))
+    sns.histplot(features['book_age'].dropna(), bins=30, kde=True)
+    plt.title('Distribution of Book Age')
+    plt.xlabel('Book Age')
+    plt.show()
